@@ -72,7 +72,7 @@ public class FaltechTeleop1v5 extends OpMode {
         HopperSrv = hardwareMap.servo.get("HopperSrv");
         ChurroGrab1 = hardwareMap.servo.get("ChurroGrab1");
         ChurroGrab2 = hardwareMap.servo.get("ChurroGrab2");
-
+        climberSaverServo = hardwareMap.servo.get("ClimberSaverServo");
         gyroSensor = hardwareMap.gyroSensor.get("gyroSensor");
 
         // calibrate the gyro.
@@ -125,25 +125,10 @@ public class FaltechTeleop1v5 extends OpMode {
         }
 
         //Arms
-        /*
-        if (gamepad2.right_trigger > 50) { //If RT is pressed, full-power mode
-            ArmRightPower = gamepad2.right_stick_y;
-            ArmLeftPower = gamepad2.right_stick_y;
-            telemetry.addData("ArmPower Full", gamepad2.right_stick_y);
-        }
-		else if (gamepad2.right_trigger <= 50 ) { //IF RT is not pressed, half-power mode
-            ArmRightPower = gamepad2.right_stick_y / 2;
-            ArmLeftPower = gamepad2.right_stick_y / 2;
-            telemetry.addData("ArmPower Half", gamepad2.right_stick_y);
-
-
-        }
-        */
 
         ArmRightPower = gamepad2.right_stick_y;
         ArmLeftPower = -gamepad2.right_stick_y;
         telemetry.addData("ArmPower Full", gamepad2.right_stick_y);
-
 
         //Elevator
 
