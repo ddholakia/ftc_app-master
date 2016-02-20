@@ -37,6 +37,7 @@ public class FaltechTeleop1v5 extends OpMode {
     Servo ChurroGrab1;
     Servo ChurroGrab2;
     Servo HopperSrv;
+    Servo climberSaverServo;
 
     //Motor Power Settings
     float MtrsLeftPower;
@@ -72,6 +73,8 @@ public class FaltechTeleop1v5 extends OpMode {
         //Set Churro Grabber's Position
         ChurroGrab1.setPosition(1);
         ChurroGrab2.setPosition(0);
+        HopperSrv.setPosition(.5);
+
     }
 
 
@@ -117,7 +120,7 @@ public class FaltechTeleop1v5 extends OpMode {
         */
 
         ArmRightPower = gamepad2.right_stick_y;
-        ArmLeftPower = gamepad2.right_stick_y;
+        ArmLeftPower = -gamepad2.right_stick_y;
         telemetry.addData("ArmPower Full", gamepad2.right_stick_y);
 
 
@@ -171,6 +174,15 @@ public class FaltechTeleop1v5 extends OpMode {
         }
         telemetry.addData("Right Speed", -gamepad1.right_stick_y);
         telemetry.addData("Left Speed", -gamepad1.left_stick_y);
+
+        //climberSaverServo
+        if (gamepad1.dpad_up || gamepad1.dpad_left) {
+            if (gamepad1.dpad_up) {
+                climberSaverServo.setPosition(.5);
+            } else {
+                climberSaverServo.setPosition(0);
+            }
+        }
 
     }
 
