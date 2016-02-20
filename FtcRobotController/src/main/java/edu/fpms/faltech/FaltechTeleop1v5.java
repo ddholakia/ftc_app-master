@@ -11,6 +11,8 @@ package edu.fpms.faltech;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorController;
+import com.qualcomm.robotcore.hardware.GyroSensor;
 import com.qualcomm.robotcore.hardware.Servo;
 
 /**
@@ -45,6 +47,8 @@ public class FaltechTeleop1v5 extends OpMode {
     float ArmRightPower;
     float ArmLeftPower;
 
+    GyroSensor gyroSensor;
+
 
     public FaltechTeleop1v5() {
 
@@ -69,11 +73,23 @@ public class FaltechTeleop1v5 extends OpMode {
         ChurroGrab1 = hardwareMap.servo.get("ChurroGrab1");
         ChurroGrab2 = hardwareMap.servo.get("ChurroGrab2");
 
+        gyroSensor = hardwareMap.gyroSensor.get("gyroSensor");
+
+        // calibrate the gyro.
+        gyroSensor.calibrate();
+        // make sure the gyro is calibrated.
+        while (gyroSensor.isCalibrating()) {
+        }
+        gyroSensor.resetZAxisIntegrator();
+
 
         //Set Churro Grabber's Position
         ChurroGrab1.setPosition(1);
         ChurroGrab2.setPosition(0);
         HopperSrv.setPosition(.5);
+
+        MtrsLeft.setMode(DcMotorController.RunMode.RUN_USING_ENCODERS);
+        MtrsRight.setMode(DcMotorController.RunMode.RUN_USING_ENCODERS);
 
     }
 
@@ -88,6 +104,11 @@ public class FaltechTeleop1v5 extends OpMode {
 
         //Drive Train
         this.telemetry.addData("isReversed", isReversed);
+
+        this.telemetry.addData("left  Enc", MtrsLeft.getCurrentPosition());
+        this.telemetry.addData("right Enc", MtrsRight.getCurrentPosition());
+        this.telemetry.addData("heading  ", gyroSensor.getHeading());
+
         if (System.nanoTime() > timer)
             btn_pressed = false;
         if (!btn_pressed && gamepad1.b) { // Toggle Backwards Driving
