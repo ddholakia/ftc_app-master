@@ -82,6 +82,7 @@ public class FaltechTeleop1v5 extends OpMode {
         }
         gyroSensor.resetZAxisIntegrator();
 
+        climberSaverServo.setPosition(.3);
 
         //Set Churro Grabber's Position
         ChurroGrab1.setPosition(1);

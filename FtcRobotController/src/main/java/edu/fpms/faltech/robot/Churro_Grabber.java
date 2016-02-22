@@ -25,8 +25,13 @@ public class Churro_Grabber {
     }
 
     //set the Churro Grabber's position
-    public void setChurroGrabers(int position) {
-        ChurroGrab1.setPosition(position);
-        ChurroGrab1.setPosition(position);
+    public void Up() {
+        ChurroGrab1.setPosition(1);
+        ChurroGrab2.setPosition(0);
+    }
+
+    public void Down() {
+        ChurroGrab1.setPosition(0);
+        ChurroGrab2.setPosition(1);
     }
 }

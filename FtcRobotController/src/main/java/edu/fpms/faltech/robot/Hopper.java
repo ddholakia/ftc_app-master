@@ -38,7 +38,7 @@ public class Hopper {
     }
 
     //stop
-    private void stop() {
+    public void stop() {
         hopperServo.setPosition(.5);
     }
 }

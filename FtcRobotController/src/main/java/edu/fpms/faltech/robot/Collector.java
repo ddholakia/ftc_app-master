@@ -25,12 +25,12 @@ public class Collector {
 
     //Collect
     public void Collect() {
-        Spinners.setPower(1);
+        Spinners.setPower(-1);
     }
 
     //Flush
     public void Flush() {
-        Spinners.setPower(-1);
+        Spinners.setPower(1);
     }
 
     //Stop

@@ -13,7 +13,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 public class DriveTrain {
 
-    final static int pulsesPerRevolution = 1680 / 2;
+    final static int pulsesPerRevolution = 1680;
     final static double tireCircumference = 12.56; //inches
 
     private LinearOpMode opMode;
@@ -61,11 +61,11 @@ public class DriveTrain {
     }
 
     // getEncoderAverage
-    private int getEncoderAverage() {
+    private long getEncoderAverage() {
         return (leftMotor.getCurrentPosition() + rightMotor.getCurrentPosition()) / 2;
     }
 
-    private boolean Go(int distance, double power, int timeout) throws InterruptedException {
+    private boolean Go(long distance, double power, int timeout) throws InterruptedException {
         ElapsedTime timer = new ElapsedTime();
 
         // resetEncoders();
@@ -73,19 +73,22 @@ public class DriveTrain {
         leftMotor.setPower(power);
         rightMotor.setPower(power);
 
-        int currentPosition = getEncoderAverage();
+        //long currentPosition = getEncoderAverage();
+        long currentPosition = Math.abs(rightMotor.getCurrentPosition());
 
         if (power > 0) { //go forward
-            int targetPosition = currentPosition + distance;
+            long targetPosition = Math.abs(currentPosition) + distance;
             while ((currentPosition < targetPosition) && (timer.time() < timeout)) {
-                currentPosition = getEncoderAverage();
+                currentPosition = Math.abs(rightMotor.getCurrentPosition());
+                //currentPosition = getEncoderAverage();
                 opMode.telemetry.addData("Pos: ", currentPosition);
                 opMode.telemetry.addData("TPos: ", targetPosition);
             }
         } else if (power < 0) { //go backward
-            int targetPosition = currentPosition - distance;
-            while ((currentPosition > targetPosition) && (timer.time() < timeout)) {
-                currentPosition = getEncoderAverage();
+            long targetPosition = Math.abs(currentPosition - distance);
+            while ((currentPosition < targetPosition) && (timer.time() < timeout)) {
+                currentPosition = Math.abs(rightMotor.getCurrentPosition());
+                //currentPosition = getEncoderAverage();
                 opMode.telemetry.addData("Pos: ", currentPosition);
                 opMode.telemetry.addData("TPos: ", targetPosition);
             }
@@ -113,7 +116,7 @@ public class DriveTrain {
     //GoInches
     public boolean GoInches(double inches, double power, int seconds) throws InterruptedException {
         opMode.telemetry.addData("GoInches", inches);
-        int distance = (int) (((Math.abs(inches) / tireCircumference) * pulsesPerRevolution));
+        long distance = (long) (((Math.abs(inches) / tireCircumference) * pulsesPerRevolution));
         return Go(distance, power, seconds);
     }
 
