@@ -63,11 +63,12 @@ public class RobotTestv1 extends LinearOpMode {
       robot.arms.hopper.goRight(10000);
       wait(500);
       robot.arms.hopper.goLeft(5000);
-    */
+
         robot.climberSavers.ClimberStartPosition();
         robot.climberSavers.ClimberReleasePosition();
         robot.climberSavers.ClimberTeleopPosition();
-
+    */
+        robot.driveTrain.GoStraitInches(100, .7, 20);
 
     }
 }
