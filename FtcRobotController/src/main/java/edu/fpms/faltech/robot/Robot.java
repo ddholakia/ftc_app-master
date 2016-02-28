@@ -25,6 +25,9 @@ public class Robot {
         arms = new Arms(opMode);
         collector = new Collector(opMode);
         climberSavers = new Climber_Savers(opMode);
+
+        driveTrain.churro_grabber.Up();
+        climberSavers.ClimberStartPosition();
     }
 
 }

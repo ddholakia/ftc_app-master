@@ -14,7 +14,6 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorController;
 import com.qualcomm.robotcore.hardware.GyroSensor;
 import com.qualcomm.robotcore.hardware.Servo;
-
 /**
  * TeleOp Mode
  * <p/>
@@ -48,7 +47,6 @@ public class FaltechTeleop1v5 extends OpMode {
     float ArmLeftPower;
 
     GyroSensor gyroSensor;
-
 
     public FaltechTeleop1v5() {
 
@@ -85,13 +83,14 @@ public class FaltechTeleop1v5 extends OpMode {
         climberSaverServo.setPosition(.3);
 
         //Set Churro Grabber's Position
-        ChurroGrab1.setPosition(1);
-        ChurroGrab2.setPosition(0);
+
         HopperSrv.setPosition(.5);
 
         MtrsLeft.setMode(DcMotorController.RunMode.RUN_USING_ENCODERS);
         MtrsRight.setMode(DcMotorController.RunMode.RUN_USING_ENCODERS);
 
+        ChurroGrab1.setPosition(1);
+        ChurroGrab2.setPosition(0);
     }
 
 

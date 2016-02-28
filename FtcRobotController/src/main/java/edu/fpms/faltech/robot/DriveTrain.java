@@ -169,6 +169,44 @@ public class DriveTrain {
         return true;
     }
 
+
+    private boolean GoStraight(long distance, double power, int timeout) throws InterruptedException {
+        double gain = .5;
+        Thread.sleep(500);
+        gyroSensor.resetZAxisIntegrator();// set heading to zero
+        int heading = gyroSensor.getHeading();
+        long currentPosition = Math.abs(rightMotor.getCurrentPosition());
+        long targetPosition = Math.abs(currentPosition) + distance;
+        //currentPosition = getEncoderAverage();
+        ElapsedTime timer = new ElapsedTime();
+        opMode.telemetry.addData("Pos: ", currentPosition);
+        opMode.telemetry.addData("TPos: ", targetPosition);
+        while(currentPosition < targetPosition && (timer.time() < timeout)) {
+            if (power > 0 && heading == 0) {
+                //go forward, equal power on both motors.
+                leftMotor.setPower(power);
+                rightMotor.setPower(power);
+            } else if (power > 0 && heading > 180) { //Drifting Left
+                leftMotor.setPower(power + (.066 *(360 - heading) * gain));
+                rightMotor.setPower(power - (.066 *(360 - heading) * gain));
+            } else if (power > 0 && heading < 180 && heading != 0) { //Drifting Right
+                leftMotor.setPower(power - (.066 * heading * gain));
+                rightMotor.setPower(power + (.066 * heading * gain));
+            }
+            currentPosition = Math.abs(rightMotor.getCurrentPosition());
+        }
+        leftMotor.setPower(0);
+        rightMotor.setPower(0);
+
+        return timer.time() <= timeout;
+    }
+
+    public boolean GoStraitInches(double inches, double power, int timeout) throws InterruptedException{
+        opMode.telemetry.addData("GoInches", inches);
+        long distance = (long) (((Math.abs(inches) / tireCircumference) * pulsesPerRevolution));
+        return GoStraight(distance, power, timeout);
+    }
+
     //Gyro Test
     public void GyroTest() {
         while (true) {
