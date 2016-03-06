@@ -37,6 +37,10 @@ import com.qualcomm.robotcore.eventloop.opmode.OpModeRegister;
 import edu.fpms.faltech.Auto_B_M_guys_SZ;
 import edu.fpms.faltech.Auto_R_M_guys_SZ;
 import edu.fpms.faltech.FaltechTeleop1v5;
+import edu.fpms.faltech.FaltechTeleop1v6;
+import edu.fpms.faltech.FaltechTeleop1v7;
+import edu.fpms.faltech.RobotTestv1;
+
 
 /**
  * Register Op Modes
@@ -61,8 +65,12 @@ public class FtcOpModeRegister implements OpModeRegister {
         // manager.register("ServoTest", ServoTest.class);
 
         manager.register("FaltechTeleop1v5", FaltechTeleop1v5.class);
+        manager.register("FaltechTeleop1v6", FaltechTeleop1v6.class);
         manager.register("Auto_R_M_guys_SZ", Auto_R_M_guys_SZ.class);
         manager.register("Auto_B_M_guys_SZ", Auto_B_M_guys_SZ.class);
+        manager.register("RobotTestv1", RobotTestv1.class);
+        manager.register("MRGyroTest", MRGyroTest.class);
+        manager.register("FaltechTeleop1v7", FaltechTeleop1v7.class);
        /*
         manager.register("RobotTestv1", RobotTestv1.class);
         manager.register("Auto_B_CS_guys_PZ", Auto_B_CS_guys_PZ.class);

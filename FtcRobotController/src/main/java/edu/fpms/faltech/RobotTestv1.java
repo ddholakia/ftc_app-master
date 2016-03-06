@@ -51,8 +51,8 @@ public class RobotTestv1 extends LinearOpMode {
         //robot.driveTrain.GyroTest();
 
 
-        robot.driveTrain.GoInches(15, 1, 30);//Testing Drive
-        robot.driveTrain.GoInches(15, -1, 30);
+        //robot.driveTrain.GoInches(15, 1, 30);//Testing Drive
+        //robot.driveTrain.GoInches(15, -1, 30);
         //robot.driveTrain.PivotTurn(45, .5, 5);
         //robot.driveTrain.PivotTurn(-45, .5, 5);
 
@@ -68,7 +68,7 @@ public class RobotTestv1 extends LinearOpMode {
         robot.climberSavers.ClimberReleasePosition();
         robot.climberSavers.ClimberTeleopPosition();
     */
-        robot.driveTrain.GoStraitInches(100, .7, 20);
-
+        robot.driveTrain.GoStraitInches(60, .5, 60);
+        robot.driveTrain.PivotTurn(45, .5, 8);
     }
 }
