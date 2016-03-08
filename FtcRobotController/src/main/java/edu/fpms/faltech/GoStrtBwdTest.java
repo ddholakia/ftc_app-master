@@ -38,7 +38,7 @@ import edu.fpms.faltech.robot.Robot;
 /**
  * A simple example of a linear op mode that will approach an IR beacon
  */
-public class RobotTestv1 extends LinearOpMode {
+public class GoStrtBwdTest extends LinearOpMode {
 
     private Robot robot;
 
@@ -49,10 +49,5 @@ public class RobotTestv1 extends LinearOpMode {
         waitForStart();
 
         robot.driveTrain.GoStraitInches(-50, .5, 60);
-        robot.driveTrain.PivotTurn(33, .5, 30);
-        robot.driveTrain.GoStraitInches(-55, .5, 30);
-        robot.driveTrain.PivotTurn(33, .5, 30);
-        robot.driveTrain.GoStraitInches(-25, .5, 30);
-        //robot.driveTrain.ApproachBeacon(4);
     }
 }

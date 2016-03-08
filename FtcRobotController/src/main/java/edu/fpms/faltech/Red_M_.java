@@ -27,10 +27,9 @@ import edu.fpms.faltech.robot.Robot;
 /**
  * A simple example of a linear op mode that will approach an IR beacon
  */
-public class Auto_R_M_guys_SZ extends LinearOpMode {
+public class Red_M_ extends LinearOpMode {
 
     private Robot robot;
-
 
     @Override
     public void runOpMode() throws InterruptedException {
@@ -41,21 +40,25 @@ public class Auto_R_M_guys_SZ extends LinearOpMode {
         robot.climberSavers.ClimberStartPosition();
         // wait for the start button to be pressed
         waitForStart();
-/* This is a Autonomous for blue alliance,
-It goes from the corner to drop off the climbers
-into the shelter. Then it ends in the Floor Goal.
+/* This is a Autonomous for red alliance,
+It starts at the middle and ends at the beacon.
  */
         //Auto Start
         robot.collector.Flush();
-        robot.driveTrain.GoInches(87, -.5, 20);
-        robot.climberSavers.ClimberReleasePosition();
+        robot.driveTrain.GoStraitInches(-50, .5, 60);
+        robot.driveTrain.PivotTurn(-33, .5, 30);
+        robot.driveTrain.GoStraitInches(-55, .5, 30);
+        robot.driveTrain.PivotTurn(-33, .5, 30);
         robot.collector.Stop();
-        sleep(5000);
-        robot.climberSavers.ClimberTeleopPosition();
-        //robot.driveTrain.PivotTurn(90, .5, 10);
-        //robot.driveTrain.GoInches(75, -.5, 5);
-        //robot.driveTrain.PivotTurn(-90,.5,10);
+        robot.collector.Collect();
+        robot.driveTrain.GoStraitInches(-25, .5, 30);
+        robot.collector.Stop();
 
+        /*
+        if (robot.driveTrain.ApproachBeacon(4)){
+            // do something like drop off guys
 
+        }
+        */
     }
 }

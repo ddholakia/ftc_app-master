@@ -124,9 +124,9 @@ public class FaltechTeleop1v7 extends OpMode {
         //Hoppers
         if (gamepad2.left_bumper || gamepad2.right_bumper) {
             if (gamepad2.left_bumper) {
-                HopperSrv.setPosition(0);
-            } else {//rightbumper
                 HopperSrv.setPosition(1);
+            } else {//rightbumper
+                HopperSrv.setPosition(0);
             }
         } else {
             HopperSrv.setPosition(.5);

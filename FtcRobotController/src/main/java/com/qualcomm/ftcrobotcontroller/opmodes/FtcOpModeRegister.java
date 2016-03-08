@@ -34,12 +34,7 @@ package com.qualcomm.ftcrobotcontroller.opmodes;
 import com.qualcomm.robotcore.eventloop.opmode.OpModeManager;
 import com.qualcomm.robotcore.eventloop.opmode.OpModeRegister;
 
-import edu.fpms.faltech.Auto_B_M_guys_SZ;
-import edu.fpms.faltech.Auto_R_M_guys_SZ;
-import edu.fpms.faltech.FaltechTeleop1v5;
-import edu.fpms.faltech.FaltechTeleop1v6;
-import edu.fpms.faltech.FaltechTeleop1v7;
-import edu.fpms.faltech.RobotTestv1;
+import edu.fpms.faltech.*;
 
 
 /**
@@ -62,34 +57,22 @@ public class FtcOpModeRegister implements OpModeRegister {
      *
      * If two or more op modes are registered with the same name, the app will display an error.
      */
-        // manager.register("ServoTest", ServoTest.class);
 
         manager.register("FaltechTeleop1v5", FaltechTeleop1v5.class);
         manager.register("FaltechTeleop1v6", FaltechTeleop1v6.class);
-        manager.register("Auto_R_M_guys_SZ", Auto_R_M_guys_SZ.class);
-        manager.register("Auto_B_M_guys_SZ", Auto_B_M_guys_SZ.class);
+        manager.register("FaltechTeleop1v7", FaltechTeleop1v7.class);
+
+        manager.register("Red_M_", Red_M_.class);
+        manager.register("Blue_M_", Blue_M_.class);
+
         manager.register("RobotTestv1", RobotTestv1.class);
         manager.register("MRGyroTest", MRGyroTest.class);
-        manager.register("FaltechTeleop1v7", FaltechTeleop1v7.class);
-       /*
-        manager.register("RobotTestv1", RobotTestv1.class);
-        manager.register("Auto_B_CS_guys_PZ", Auto_B_CS_guys_PZ.class);
-        manager.register("Auto_B_CS_guys_SZ", Auto_B_CS_guys_SZ.class);
-        manager.register("Auto_B_CS_none_PZ", Auto_B_CS_none_PZ.class);
-        manager.register("Auto_B_CS_none_SZ", Auto_B_CS_none_SZ.class);
-        manager.register("Auto_B_M_none_PZ", Auto_B_M_none_PZ.class);
-        manager.register("Auto_B_M_none_SZ", Auto_B_M_none_SZ.class);
-        manager.register("Auto_B_MS_guys_PZ", Auto_B_MS_guys_PZ.class);
-        manager.register("Auto_B_MS_guys_SZ", Auto_B_MS_guys_SZ.class);
-
-        manager.register("Auto_R_CS_guys_PZ", Auto_R_CS_guys_PZ.class);
-        manager.register("Auto_R_CS_guys_SZ", Auto_R_CS_guys_SZ.class);
-        manager.register("Auto_R_CS_none_PZ", Auto_R_CS_none_PZ.class);
-        manager.register("Auto_R_CS_none_SZ", Auto_R_CS_none_SZ.class);
-        manager.register("Auto_R_M_none_PZ", Auto_R_M_none_PZ.class);
-        manager.register("Auto_R_M_none_SZ", Auto_R_M_none_SZ.class);
-        manager.register("Auto_R_MS_guys_PZ", Auto_R_MS_guys_PZ.class);
-        manager.register("Auto_R_MS_guys_SZ", Auto_R_MS_guys_SZ.class);
-        */
+        manager.register("GyroTest", GryoTest.class);
+        manager.register("DistTest", DistTest.class);
+        manager.register("AdafruitRGBExample", AdafruitRGBExample.class);
+        manager.register("ApproachTest", ApproachTest.class);
+        manager.register("GoStrtFwd", GoStrtFwdTest.class);
+        manager.register("GoStrtBwd", GoStrtBwdTest.class);
+        manager.register("ApproachBeaconTest", ApproachBeaconTest.class);
     }
 }
