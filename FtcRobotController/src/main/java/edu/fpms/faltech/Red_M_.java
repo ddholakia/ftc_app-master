@@ -57,6 +57,8 @@ It starts at the middle and ends at the beacon.
         /*
         if (robot.driveTrain.ApproachBeacon(4)){
             // do something like drop off guys
+            robot.climbe
+            rSavers.ClimberReleasePosition();
 
         }
         */

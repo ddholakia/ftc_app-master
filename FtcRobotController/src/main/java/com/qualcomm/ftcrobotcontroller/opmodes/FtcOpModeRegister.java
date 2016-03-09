@@ -74,5 +74,6 @@ public class FtcOpModeRegister implements OpModeRegister {
         manager.register("GoStrtFwd", GoStrtFwdTest.class);
         manager.register("GoStrtBwd", GoStrtBwdTest.class);
         manager.register("ApproachBeaconTest", ApproachBeaconTest.class);
+        manager.register("BeaconTest", BeaconTest.class);
     }
 }

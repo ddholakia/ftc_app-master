@@ -29,47 +29,27 @@ CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. */
 
-package edu.fpms.faltech.robot;
-
-import android.graphics.Color;
+package edu.fpms.faltech;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.hardware.ColorSensor;
-import com.qualcomm.robotcore.hardware.DeviceInterfaceModule;
-import com.qualcomm.robotcore.hardware.DigitalChannelController;
-import com.qualcomm.robotcore.hardware.LED;
 
-public class Beacon {
-    private LinearOpMode opMode;
-    private ColorSensor colorSensor;
-    private DeviceInterfaceModule cdim;
+import edu.fpms.faltech.robot.Beacon2;
+import edu.fpms.faltech.robot.Robot;
 
-    static final int LED_CHANNEL = 0;
 
-    public Beacon(LinearOpMode opMode, boolean enableLed) throws InterruptedException {
-        this.opMode = opMode;
-        opMode.telemetry.addData("constructor", "Beacon");
+public class BeaconTest extends LinearOpMode {
 
-        // Identify Beacon Sensor from hardware map
-        cdim = opMode.hardwareMap.deviceInterfaceModule.get("dim");
-        colorSensor = opMode.hardwareMap.colorSensor.get("colorSensor");
+    private Beacon2 beacon;
 
-        cdim.setDigitalChannelMode(LED_CHANNEL, DigitalChannelController.Mode.OUTPUT);
+    @Override
+    public void runOpMode() throws InterruptedException {
+        beacon = new Beacon2(this, true);
+        // wait for the start button to be pressed
+        waitForStart();
 
-        // Switch LED ON or OFF
-        cdim.setDigitalChannelState(LED_CHANNEL, enableLed);
-
-        opMode.waitOneFullHardwareCycle();
-    }
-
-    // Function to check if the beacon is red
-    public boolean isRed() {
-        /*
-        opMode.telemetry.addData("Clear", colorSensor.alpha());
-        opMode.telemetry.addData("Red  ", colorSensor.red());
-        opMode.telemetry.addData("Green", colorSensor.green());
-        opMode.telemetry.addData("Blue ", colorSensor.blue());
-*/
-        return false;
+        telemetry.addData("Beacon2 Test", "enter test loop");
+        while (true) {
+            beacon.test();
+        }
     }
 }

@@ -53,12 +53,11 @@ It starts at the middle and ends at the beacon.
         robot.collector.Collect();
         robot.driveTrain.GoStraitInches(-25, .5, 30);
         robot.collector.Stop();
-
-        /*
+/*
         if (robot.driveTrain.ApproachBeacon(4)){
-            // do something like drop off guys
+            robot.climberSavers.ClimberReleasePosition();
 
         }
-        */
+*/        
     }
 }
